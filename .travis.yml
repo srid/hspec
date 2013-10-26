@@ -1,13 +1,10 @@
-language: haskell
-
-env:
-  - QC=QuickCheck
-  - QC=QuickCheck-2.6
-  - QC=QuickCheck-2.5.1.1
-  - QC=QuickCheck-2.5.1
+language: objective-c
 
 install:
-  - cabal install $QC
+  - brew update
+  - brew install ghc
+  - brew install cabal-install
+  - cabal update
 
 script:
   - ./travis.sh
