@@ -58,13 +58,13 @@ data FormatConfig = FormatConfig {
   formatConfigUseColor :: Bool
 , formatConfigOutputUnicode :: Bool
 , formatConfigUseDiff :: Bool
-, formatConfigPrettyPrint :: Bool
+, formatConfigPrettyPrint :: String -> String -> (String, String)
 , formatConfigPrintTimes :: Bool
 , formatConfigHtmlOutput :: Bool
 , formatConfigPrintCpuTime :: Bool
 , formatConfigUsedSeed :: Integer
 , formatConfigExpectedTotalCount :: Int
-} deriving (Eq, Show)
+}
 
 data Signal = Ok | NotOk SomeException
 

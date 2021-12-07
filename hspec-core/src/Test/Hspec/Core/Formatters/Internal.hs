@@ -107,8 +107,9 @@ getFailCount = length <$> getFailMessages
 useDiff :: FormatM Bool
 useDiff = getConfig formatConfigUseDiff
 
+-- FIXME: docs
 -- | Return `True` if the user requested pretty diffs, `False` otherwise.
-prettyPrint :: FormatM Bool
+prettyPrint :: FormatM (String -> String -> (String, String))
 prettyPrint = getConfig formatConfigPrettyPrint
 
 -- | Return `True` if the user requested unicode output, `False` otherwise.

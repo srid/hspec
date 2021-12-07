@@ -9,6 +9,7 @@ import qualified Test.Hspec.Core.Spec as Spec
 import qualified Test.Hspec.Core.Runner as H
 import           Test.Hspec.Core.Format
 import           Test.Hspec.Core.Formatters.V2
+import           Test.Hspec.Core.Formatters.Pretty (pretty2)
 
 testSpec :: H.Spec
 testSpec = do
@@ -26,7 +27,7 @@ formatConfig = FormatConfig {
   formatConfigUseColor = False
 , formatConfigOutputUnicode = True
 , formatConfigUseDiff = True
-, formatConfigPrettyPrint = True
+, formatConfigPrettyPrint = pretty2 True
 , formatConfigPrintTimes = False
 , formatConfigHtmlOutput = False
 , formatConfigPrintCpuTime = False

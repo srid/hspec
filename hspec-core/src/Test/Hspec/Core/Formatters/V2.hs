@@ -276,10 +276,7 @@ defaultFailedFormatter = do
         Reason err -> withFailColor $ indent err
         ExpectedButGot preface expected_ actual_ -> do
           pretty <- prettyPrint
-          let
-            (expected, actual)
-              | pretty = pretty2 unicode expected_ actual_
-              | otherwise = (expected_, actual_)
+          let (expected, actual) = pretty expected_ actual_
 
           mapM_ indent preface
 
