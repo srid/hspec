@@ -576,12 +576,24 @@ spec = do
         high `shouldBe` j
 
   describe "colorOutputSupported" $ do
-    it "returns False" $ do
-      withEnvironment [] $ do
-        H.colorOutputSupported H.ColorAuto (return False) `shouldReturn` False
+
+    context "without a terminal device" $ do
+
+      let isTerminalDevice = return False
+
+      it "returns False" $ do
+        withEnvironment [] $ do
+          H.colorOutputSupported H.ColorAuto isTerminalDevice `shouldReturn` False
+
+      context "with GITHUB_ACTIONS=true" $ do
+        it "returns True" $ do
+          withEnvironment [("GITHUB_ACTIONS", "true")] $ do
+            H.colorOutputSupported H.ColorAuto isTerminalDevice `shouldReturn` True
 
     context "with a terminal device" $ do
+
       let isTerminalDevice = return True
+
       it "returns True" $ do
         withEnvironment [] $ do
           H.colorOutputSupported H.ColorAuto isTerminalDevice `shouldReturn` True
